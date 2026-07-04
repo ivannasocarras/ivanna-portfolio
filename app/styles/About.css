@@ -1,0 +1,160 @@
+.about {
+  padding: 6rem 3rem 5rem;
+}
+
+.about__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about__label {
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  color: var(--accent-2);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.about__title {
+  font-family: var(--font-heading), Sora, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* ── two-column layout ── */
+.about__body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* ── bio ── */
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.about__text p {
+  font-size: 1.02rem;
+  line-height: 1.82;
+  color: var(--muted);
+}
+
+/* ── sidebar ── */
+.about__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.about__headshot-wrap {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  flex-shrink: 0;
+  margin: 0 auto 0.5rem;
+}
+
+.about__headshot {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.about__card {
+  padding: 1.6rem 1.75rem;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.about__card-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.about__card-title {
+  font-family: var(--font-heading), Sora, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 0.55rem;
+}
+
+.about__card-school {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.about__card-year {
+  font-size: 0.85rem;
+  color: var(--muted-2);
+}
+
+.about__spec-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.about__spec-list li {
+  font-size: 0.95rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.about__spec-list li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--highlight);
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .about {
+    padding: 4rem 1.75rem 4rem;
+  }
+
+  .about__body {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about__sidebar {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .about__card {
+    flex: 1 1 260px;
+  }
+}
+
+@media (max-width: 560px) {
+  .about__sidebar {
+    flex-direction: column;
+  }
+}
