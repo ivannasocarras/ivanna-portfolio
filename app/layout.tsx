@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   title: "Ivanna Socarras — Embedded Systems & Robotics Engineer",
   description:
     "Portfolio of Ivanna Socarras, an embedded systems and robotics engineer building intelligent hardware, robotics, and AI-powered systems.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 export default function RootLayout({
