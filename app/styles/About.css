@@ -51,8 +51,13 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+/* ── sticky bio ── */
+.about__text {
   position: sticky;
   top: 6rem;
+  align-self: start;
 }
 
 .about__headshot-wrap {
@@ -105,6 +110,12 @@
 .about__card-year {
   font-size: 0.85rem;
   color: var(--muted-2);
+}
+
+.about__card-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 1.1rem 0;
 }
 
 .about__spec-list {

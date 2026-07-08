@@ -114,7 +114,7 @@ html[data-theme="light"] .robotic-arm__claw {
 }
 
 .hero__title {
-  font-size: clamp(2rem, 3.6vw, 3.6rem);
+  font-size: clamp(1.7rem, 2.9vw, 2.9rem);
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.03em;
