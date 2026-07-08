@@ -21,7 +21,7 @@ interface Project {
   description: string;
   tags: Filter[];
   techStack: string[];
-  github: string;
+  github?: string;
   date: { month: number; year: number };
   activelyWorking?: boolean;
   progress?: number;
