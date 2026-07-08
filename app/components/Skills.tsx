@@ -22,6 +22,7 @@ const CATEGORIES: Category[] = [
     skills: [
       { name: "C",          color: "#5fa8ff", icon: "C",   logo: "/photos/skills/c_Logo.png"           },
       { name: "C++",        color: "#6b9ef5", icon: "C++", logo: "/photos/skills/C++_Logo.png"         },
+      { name: "C#",         color: "#9b4fca", icon: "C#",  logo: "/photos/skills/Logo_C_sharp.png"     },
       { name: "Python",     color: "#ffd23f", icon: "Py",  logo: "/photos/skills/python_Logo.png"      },
       { name: "JavaScript", color: "#ffd23f", icon: "JS",  logo: "/photos/skills/javascript_Logo.png"  },
       { name: "TypeScript", color: "#5fa8ff", icon: "TS",  logo: "/photos/skills/typescript_Logo.webp" },
