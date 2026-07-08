@@ -98,7 +98,7 @@ const PROJECTS: Project[] = [
         ],
       },
     ],
-    status: "Procured the 20Kpps galvo kit and ESP32 hardware. Successfully benchmarked 12-bit SPI DAC throughput and verified analog signal conditioning on a breadboard. Currently tuning LQR state-space matrix gains.",
+    status: "Purchased a 20Kpps galvo kit and ESP32 hardware. Successfully benchmarked 12-bit SPI DAC throughput and verified analog signal conditioning on a breadboard. Currently tuning LQR state-space matrix gains.",
     tags: ["What's Next?", "Embedded"],
     techStack: ["ESP32", "C++", "FreeRTOS", "LQR Control", "MCP4922 DAC", "TL072/LM833", "BLE", "PostgreSQL", "SPI", "ADC", "TTL"],
   },
