@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 import "../styles/Projects.css";
 
-const FILTERS = ["Featured", "What's Next?", "All", "Full Stack", "Embedded", "PCB Design"] as const;
+const FILTERS = ["Featured", "What's Next?", "All", "Full Stack", "Embedded", "PCB Design", "Web Apps", "Mobile Apps", "AI/ML"] as const;
 type Filter = (typeof FILTERS)[number];
 
 type MediaItem = string | { src: string; position?: string };
