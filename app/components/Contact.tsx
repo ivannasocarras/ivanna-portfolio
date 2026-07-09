@@ -1,18 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "../styles/Contact.css";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const { name, email, message } = form;
-    const mailto = `mailto:ivanna.socarras@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
-    window.location.href = mailto;
-    setSent(true);
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        "service_81j97tf",
+        "template_9ael5fs",
+        { from_name: form.name, from_email: form.email, message: form.message },
+        "11DPPLxaOt9PkWnQw"
+      );
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -137,8 +147,8 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" className="contact__submit">
-                {sent ? "Opening email client…" : "Send Message"}
+              <button type="submit" className="contact__submit" disabled={status === "sending" || status === "sent"}>
+                {status === "sending" ? "Sending…" : status === "sent" ? "Message Sent!" : status === "error" ? "Failed — Try Again" : "Send Message"}
                 <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
