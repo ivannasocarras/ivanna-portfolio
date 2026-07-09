@@ -32,6 +32,19 @@ const CATEGORIES: Category[] = [
     ],
   },
   {
+    label: "Full-Stack Dev",
+    skills: [
+      { name: "React",            color: "#5fa8ff", icon: "Re",  logo: "/photos/skills/react_Logo.png"      },
+      { name: "Next.js",          color: "#e0e0e0", icon: "Nx",  logo: "/photos/skills/next.js_Logo.webp"   },
+      { name: "Node.js",          color: "#4cd964", icon: "No",  logo: "/photos/skills/node.js_Logo.webp"   },
+      { name: "Express",          color: "#8c8c98", icon: "Ex",  logo: "/photos/skills/expressjs_Logo.webp" },
+      { name: "REST APIs",        color: "#8b6fb8", icon: "API", logo: "/photos/skills/restfulapi_Logo.png" },
+      { name: "React Native", color: "#5fa8ff", icon: "RN",  logo: "/photos/skills/react_Logo.png"       },
+      { name: "Tailwind CSS", color: "#6ee7d8", icon: "TW",  logo: "/photos/skills/tailwind_Logo.png"    },
+      { name: "Authentication",   color: "#f5814a", icon: "Au",  logo: "/photos/skills/authentication_Logo.svg" },
+    ],
+  },
+  {
     label: "Embedded Systems",
     skills: [
       { name: "FreeRTOS",           color: "#6ee7d8", icon: "RT",   logo: "/photos/skills/freeRTOS_Logo.png"        },
@@ -64,22 +77,6 @@ const CATEGORIES: Category[] = [
     skills: [
       { name: "Laser Systems",     color: "#ff5a5f", icon: "LSR", logo: "/photos/skills/laser_logo.webp" },
       { name: "LiDAR",             color: "#ffd23f", icon: "LD",  logo: "/photos/skills/lidar_logo.png"  },
-      { name: "Optical Alignment",         color: "#8b6fb8", icon: "OA",  logo: "/photos/skills/optical_allignment_logo.png" },
-      { name: "Ansys Zemax OpticStudio",   color: "#f5814a", icon: "ZMX", logo: "/photos/skills/ansys_logo.png"               },
-    ],
-  },
-  {
-    label: "Full-Stack Dev",
-    skills: [
-      { name: "React",            color: "#5fa8ff", icon: "Re",  logo: "/photos/skills/react_Logo.png"      },
-      { name: "Next.js",          color: "#e0e0e0", icon: "Nx",  logo: "/photos/skills/next.js_Logo.webp"   },
-      { name: "TypeScript",       color: "#5fa8ff", icon: "TS",  logo: "/photos/skills/typescript_Logo.webp"},
-      { name: "Node.js",          color: "#4cd964", icon: "No",  logo: "/photos/skills/node.js_Logo.webp"   },
-      { name: "Express",          color: "#8c8c98", icon: "Ex",  logo: "/photos/skills/expressjs_Logo.webp" },
-      { name: "REST APIs",        color: "#8b6fb8", icon: "API", logo: "/photos/skills/restfulapi_Logo.png" },
-      { name: "React Native", color: "#5fa8ff", icon: "RN",  logo: "/photos/skills/react_Logo.png"       },
-      { name: "Tailwind CSS", color: "#6ee7d8", icon: "TW",  logo: "/photos/skills/tailwind_Logo.png"    },
-      { name: "Authentication",   color: "#f5814a", icon: "Au",  logo: "/photos/skills/authentication_Logo.svg" },
     ],
   },
   {
@@ -97,6 +94,7 @@ const CATEGORIES: Category[] = [
     skills: [
       { name: "Git",            color: "#f5814a", icon: "Gt",  logo: "/photos/skills/git_Logo.png"        },
       { name: "Docker",         color: "#5fa8ff", icon: "Dk",  logo: "/photos/skills/docker_Logo.png"     },
+      { name: "Kubernetes",     color: "#5fa8ff", icon: "K8s", logo: "/photos/skills/kubernetes_Logo.webp"},
       { name: "Linux",          color: "#ffd23f", icon: "Lx",  logo: "/photos/skills/linux_Logo.png"      },
       { name: "GitHub Actions", color: "#e0e0e0", icon: "GA",  logo: "/photos/skills/github_Logo.png"     },
       { name: "VS Code",        color: "#5fa8ff", icon: "VS",  logo: "/photos/skills/vscode_Logo.png"     },

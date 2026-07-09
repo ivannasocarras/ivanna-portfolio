@@ -48,16 +48,15 @@
 
 /* ── sidebar ── */
 .about__sidebar {
+  align-self: stretch;
+}
+
+.about__sidebar-inner {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-}
-
-/* ── sticky bio ── */
-.about__text {
   position: sticky;
   top: 6rem;
-  align-self: start;
 }
 
 .about__headshot-wrap {
@@ -153,7 +152,7 @@
     gap: 2.5rem;
   }
 
-  .about__sidebar {
+  .about__sidebar-inner {
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
@@ -165,7 +164,7 @@
 }
 
 @media (max-width: 560px) {
-  .about__sidebar {
+  .about__sidebar-inner {
     flex-direction: column;
   }
 }

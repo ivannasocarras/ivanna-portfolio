@@ -12,14 +12,14 @@ export default function Hero() {
         <p className="hero__greeting">👋 Hi, I&apos;m Ivanna</p>
 
         <h1 className="hero__title">
-          Designing systems where electronics, optics, and software come together.
+          Building software and systems that solve real problems
         </h1>
 
         <p className="hero__intro">
-          I&apos;m an engineer focused on embedded and electro-optical systems.
-          I enjoy designing complete products that combine electronics, optics,
-          firmware, and mechanical design, taking ideas from early prototypes
-          to working hardware.
+          I&apos;m a computer engineer who builds full-stack applications,
+          embedded software, real-time systems, and automation solutions. I
+          enjoy taking projects from an initial idea all the way to a
+          polished product.
         </p>
 
         <div className="hero__buttons">

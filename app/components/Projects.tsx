@@ -37,6 +37,7 @@ const PROJECTS: Project[] = [
   {
     id: 9,
     slug: "galvanometer-scanner",
+    hidden: true,
     title: "Closed-Loop Laser Galvanometer Vector Scanner",
     activelyWorking: true,
     progress: 10,
@@ -219,7 +220,6 @@ const PROJECTS: Project[] = [
   {
     id: 1,
     slug: "cubli",
-    hidden: true,
     title: "Cubli: Reaction Wheel Robot",
     activelyWorking: true,
     progress: 30,
