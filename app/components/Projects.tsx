@@ -7,7 +7,8 @@ import "../styles/Projects.css";
 const FILTERS = ["Featured", "What's Next?", "All", "Full Stack", "Embedded", "PCB Design", "Web Apps", "Mobile Apps", "AI/ML"] as const;
 type Filter = (typeof FILTERS)[number];
 
-type MediaItem = string | { src: string; position?: string };
+type MediaSlide = { src: string; position?: string; fit?: "cover" | "contain" };
+type MediaItem = string | MediaSlide | { group: string[] };
 
 interface Phase {
   name: string;
@@ -221,18 +222,30 @@ const PROJECTS: Project[] = [
     id: 1,
     slug: "cubli",
     title: "Cubli: Reaction Wheel Robot",
+    images: [
+      { src: "/photos/projects/cubli/IMG_4152.mov", fit: "contain" },
+      "/photos/projects/cubli/pcb.png",
+      "/photos/projects/cubli/Schematics.webp",
+      {
+        group: [
+          "/photos/projects/cubli/app_1.webp",
+          "/photos/projects/cubli/app_2.webp",
+          "/photos/projects/cubli/app_3.webp",
+        ],
+      },
+    ],
     activelyWorking: true,
-    progress: 30,
+    progress: 75,
     date: { month: 6, year: 2026 },
     description:
       "A custom-built reaction wheel robot capable of balancing on edges and vertices, jumping between orientations, and rotating in place using real-time feedback control. The project combines embedded firmware with a companion mobile app for wireless monitoring, telemetry, and control.",
-    tags: ["What's Next?", "Embedded", "Mobile Apps"],
+    tags: ["What's Next?", "Embedded", "PCB Design", "Mobile Apps"],
     techStack: ["ESP-IDF", "FreeRTOS", "BLE", "React Native", "Expo", "NativeWind", "TypeScript"],
-    github: "#",
+    github: "https://github.com/ivannasocarras/cubli",
   },
 ];
 
-function normMedia(m: MediaItem) {
+function normMedia(m: string | MediaSlide) {
   return typeof m === "string" ? { src: m, position: "center center" } : { position: "center center", ...m };
 }
 
@@ -302,7 +315,7 @@ function ProjectImage({ images }: { images?: MediaItem[] }) {
     );
   }
 
-  const track = [...images, images[0]].map(normMedia);
+  const track = [...images, images[0]];
 
   return (
     <div
@@ -323,12 +336,23 @@ function ProjectImage({ images }: { images?: MediaItem[] }) {
           transition: transitioning ? "transform 1s ease" : "none",
         }}
       >
-        {track.map((item, i) =>
-          item.src.endsWith(".mp4")
-            ? <video key={i} className="project-card__carousel-img" autoPlay muted loop playsInline style={{ objectPosition: item.position }}><source src={item.src} type="video/mp4" /></video>
+        {track.map((item, i) => {
+          if (typeof item !== "string" && "group" in item) {
+            return (
+              <div key={i} className="project-card__carousel-group">
+                {item.group.map((src, j) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={src} src={src} alt={`Screenshot ${(i % n) + 1}.${j + 1}`} className="project-card__carousel-group-img" />
+                ))}
+              </div>
+            );
+          }
+          const m = normMedia(item);
+          return m.src.endsWith(".mp4") || m.src.endsWith(".mov")
+            ? <video key={i} className="project-card__carousel-img" autoPlay muted loop playsInline style={{ objectPosition: m.position, objectFit: m.fit }}>{/* .mov declared as video/mp4: browsers skip sources typed video/quicktime, but play H.264 .mov files fine */}<source src={m.src} type="video/mp4" /></video>
             // eslint-disable-next-line @next/next/no-img-element
-            : <img key={i} src={item.src} alt={`Screenshot ${(i % n) + 1}`} className="project-card__carousel-img" style={{ objectPosition: item.position }} />
-        )}
+            : <img key={i} src={m.src} alt={`Screenshot ${(i % n) + 1}`} className="project-card__carousel-img" style={{ objectPosition: m.position, objectFit: m.fit }} />;
+        })}
       </div>
       {n > 1 && (
         <>

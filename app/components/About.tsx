@@ -20,11 +20,13 @@ export default function About() {
             <h2 className="about__title">Get to Know Me</h2>
             <p>
               I am a full-stack and embedded developer with a recent degree from
-              the University of Central Florida in Computer Engineering. I have
-              built a passion for bringing together full-lifecycle products that
-              integrate the use of software, hardware, and user experience. In my
-              career thus far I have learned that what most excites me is being
-              able to create software that goes beyond just the screen.
+              the University of Central Florida in Computer Engineering and
+              currently pursuing a masters (online) from Florida International
+              University. I have built a passion for bringing together
+              full-lifecycle products that integrate the use of software,
+              hardware, and user experience. In my career thus far I have
+              learned that what most excites me is being able to create software
+              that goes beyond just the screen.
             </p>
             <p>
               I have loved developing web and mobile applications that communicate
@@ -68,6 +70,21 @@ export default function About() {
               {/* Education */}
               <div className="about__card">
                 <p className="about__card-label">Education</p>
+                <h3 className="about__card-title">
+                  Master of Science
+                  <br />
+                  Computer Engineering: Emerging Technologies
+                </h3>
+                <p className="about__card-school">
+                  Specialization: Robotics and Automation (Online/Part-Time)
+                </p>
+                <p className="about__card-school">
+                  Florida International University
+                </p>
+                <p className="about__card-year">Expected May 2028</p>
+
+                <div className="about__card-divider" />
+
                 <h3 className="about__card-title">
                   Bachelor of Science
                   <br />
