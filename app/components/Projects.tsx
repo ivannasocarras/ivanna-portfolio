@@ -224,8 +224,7 @@ const PROJECTS: Project[] = [
     title: "Cubli: Reaction Wheel Robot",
     images: [
       { src: "/photos/projects/cubli/IMG_4152.mov", fit: "contain" },
-      "/photos/projects/cubli/pcb.png",
-      "/photos/projects/cubli/Schematics.webp",
+      { src: "/photos/projects/cubli/app_video.mov", fit: "contain" },
       {
         group: [
           "/photos/projects/cubli/app_1.webp",
@@ -233,6 +232,8 @@ const PROJECTS: Project[] = [
           "/photos/projects/cubli/app_3.webp",
         ],
       },
+      "/photos/projects/cubli/pcb.png",
+      "/photos/projects/cubli/Schematics.webp",
     ],
     activelyWorking: true,
     progress: 75,
