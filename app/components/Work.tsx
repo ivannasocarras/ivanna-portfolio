@@ -22,8 +22,8 @@ const EXPERIENCES: Experience[] = [
     bullets: [
       "Engineered end-to-end features for a high-volume fintech sales portal, utilizing C# and the .NET framework to seamlessly integrate responsive frontend interfaces with secure, automated backend business logic.",
       "Designed and deployed REST API integrations and AI-driven backend automation tools within the .NET ecosystem, significantly reducing manual workflow processing time and accelerating sales task completion rates.",
-      "Eliminated requirements misinterpretation errors and reduced revision cycles by collaborating directly with cross-functional developers, testers, and project managers to translate complex financial specifications into production-ready software.",
-      "Architected data validation layers and backend controllers to ensure all solutions met strict technical specifications, verifying secure endpoint behavior and database persistence prior to production deployment.",
+      "Helped in the implementation of an OpenAI-powered fintech AI agent that securely connects to banking APIs to track spending, analyze cash flow, and execute multi-step user requests, using function calling and code interpreter to generate real-time, personalized investment and budgeting strategies.",
+      "Helped include security guardrails around agent-initiated financial actions, including data encryption ensuring safe autonomous operation within a regulated fintech environment.",
     ],
     tags: ["C#", ".NET", "REST APIs", "AI Automation", "Fintech", "Backend"],
   },
