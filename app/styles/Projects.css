@@ -440,11 +440,41 @@
   50%       { opacity: 0.35; transform: scale(0.7); }
 }
 
+.project-card__description-wrap {
+  flex: 1;
+}
+
 .project-card__description {
   font-size: 0.97rem;
   line-height: 1.78;
   color: var(--muted);
-  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+}
+
+.project-card__description.expanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+
+.project-card__read-more {
+  margin-top: 0.5rem;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.project-card__read-more:hover {
+  opacity: 0.75;
 }
 
 /* ── Actions row (progress + button) ── */

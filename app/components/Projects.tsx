@@ -36,6 +36,24 @@ interface Project {
 // array order doesn't matter — sorted newest → oldest at render time
 const PROJECTS: Project[] = [
   {
+    id: 10,
+    slug: "usb-c-kvm-dongle",
+    title: "Single-Cable Embedded USB-C Linux KVM Dongle",
+    images: [
+      "/photos/projects/KVM_Board/linux_dev_board_pcb.png",
+      "/photos/projects/KVM_Board/linux_dev_board_pcb_back.png",
+      "/photos/projects/KVM_Board/Schematics.png",
+    ],
+    activelyWorking: true,
+    progress: 10,
+    date: { month: 7, year: 2026 },
+    description:
+      "A flash-drive-sized KVM dongle that delivers full OS-independent BIOS and screen capture with USB HID keyboard/mouse emulation over a single USB-C connection, with no drivers required on the target machine. A Diodes PI2DPX1203 MUX detects cable orientation and splits USB-C into high-speed DP Alt Mode video and USB 2.0 OTG data pipelines, while a Lontium LT7911D bridge decodes raw DP Alt Mode video directly into MIPI-CSI2 lines fed to a Sophgo SG2000 SoC running Embedded Linux. Capture flows through the V4L2 video pipeline and remote control is emulated via the Linux USB Gadget Subsystem (ConfigFS / HID), currently being brought up on an SG2000 evaluation board ahead of final custom PCB bring-up.",
+    tags: ["What's Next?", "Embedded", "PCB Design"],
+    techStack: ["Sophgo SG2000 (RISC-V/ARM)", "Embedded Linux", "C", "KiCad", "MIPI-CSI2", "USB-OTG / ConfigFS", "DP Alt Mode"],
+    github: "#",
+  },
+  {
     id: 9,
     slug: "galvanometer-scanner",
     hidden: true,
@@ -224,7 +242,7 @@ const PROJECTS: Project[] = [
     title: "Cubli: Reaction Wheel Robot",
     images: [
       { src: "/photos/projects/cubli/IMG_4152.mov", fit: "contain" },
-      { src: "/photos/projects/cubli/app_video.mov", fit: "contain" },
+      { src: "/photos/projects/cubli/app_video.mov", fit: "cover", position: "60% center" },
       {
         group: [
           "/photos/projects/cubli/app_1.webp",
@@ -232,22 +250,58 @@ const PROJECTS: Project[] = [
           "/photos/projects/cubli/app_3.webp",
         ],
       },
-      "/photos/projects/cubli/pcb.png",
-      "/photos/projects/cubli/Schematics.webp",
+      "/photos/projects/cubli/cubli_pcb.png",
+      "/photos/projects/cubli/schematics.png",
+      { src: "/photos/projects/cubli/lqr_1.webp", fit: "contain" },
+      { src: "/photos/projects/cubli/lqr_2.webp", fit: "contain" },
+      { src: "/photos/projects/cubli/lqr_3.webp", fit: "contain" },
     ],
     activelyWorking: true,
     progress: 75,
     date: { month: 6, year: 2026 },
     description:
-      "A custom-built reaction wheel robot capable of balancing on edges and vertices, jumping between orientations, and rotating in place using real-time feedback control. The project combines embedded firmware with a companion mobile app for wireless monitoring, telemetry, and control.",
+      "A custom-built reaction wheel robot capable of balancing on edges and vertices, jumping between orientations, and rotating in place using real-time feedback control. The system is driven by a custom 4-layer PCB — currently in fabrication — integrating an ESP32-S3, a 6-axis IMU, and three brushless motor drivers fed by a 4S power stage. The balancing controller was formulated as a state-space LQR design in MATLAB/Simulink, where the system transfer functions were derived and the state-feedback gains verified through step-response simulations before the controller matrices were translated to C++ for on-board ESP32 execution. Low-level C++ drivers written against ESP-IDF run 200 Hz Madgwick sensor fusion over SPI alongside pulse-counter encoder feedback, while a React Native companion app streams a custom 30 Hz binary wire format over WebSockets for real-time telemetry and IMU calibration.",
     tags: ["What's Next?", "Embedded", "PCB Design", "Mobile Apps"],
-    techStack: ["ESP-IDF", "FreeRTOS", "BLE", "React Native", "Expo", "NativeWind", "TypeScript"],
+    techStack: ["KiCad", "ESP32-S3", "C++", "FreeRTOS", "MATLAB/Simulink", "React Native", "WebSockets"],
     github: "https://github.com/ivannasocarras/cubli",
   },
 ];
 
 function normMedia(m: string | MediaSlide) {
   return typeof m === "string" ? { src: m, position: "center center" } : { position: "center center", ...m };
+}
+
+function ProjectDescription({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const [overflows, setOverflows] = useState(false);
+  const ref = useRef<HTMLParagraphElement | null>(null);
+
+  // measure in the clamped (collapsed) state to decide if a toggle is needed
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || expanded) return;
+    const check = () => setOverflows(el.scrollHeight > el.clientHeight + 1);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [text, expanded]);
+
+  return (
+    <div className="project-card__description-wrap">
+      <p ref={ref} className={`project-card__description${expanded ? " expanded" : ""}`}>
+        {text}
+      </p>
+      {(overflows || expanded) && (
+        <button
+          type="button"
+          className="project-card__read-more"
+          onClick={() => setExpanded((v) => !v)}
+        >
+          {expanded ? "Show less" : "Read more…"}
+        </button>
+      )}
+    </div>
+  );
 }
 
 function ProjectImage({ images }: { images?: MediaItem[] }) {
@@ -543,7 +597,7 @@ export default function Projects() {
                 </div>
 
                 <h3 className="project-card__title">{project.title}</h3>
-                <p className="project-card__description">{project.description}</p>
+                <ProjectDescription text={project.description} />
 
                 <div className="project-card__actions">
                   {project.progress !== undefined && (
